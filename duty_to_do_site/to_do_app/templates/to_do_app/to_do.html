@@ -1,0 +1,9 @@
+{% if latest_to_do_list %}
+    <ul>
+    {% for to_do_point in latest_to_do_list %}
+       <li><a href="{% url 'to_do_app:edit' to_do_point.id %}">{{ to_do_point.to_do_point_text }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No polls are available.</p>
+{% endif %}
