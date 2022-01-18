@@ -11,4 +11,4 @@ class To_Do_Point(models.Model):
 class PointForm(forms.ModelForm):
     class Meta:
         model = To_Do_Point
-        exclude = ['to_do_point_text', 'pub_date']
+        fields = ['to_do_point_text', 'pub_date']
