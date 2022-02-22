@@ -1,7 +1,7 @@
 <form action="{% url 'to_do_app:edit_save' to_do_point.id %}" method="post">
 {% csrf_token %}
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
-<textarea type name="edit" id="edit">{{ to_do_point.to_do_point_text }}</textarea>
+<textarea name="to_do_point_text" id="edit">{{ to_do_point.to_do_point_text }}</textarea>
 <br><br>
 <input type="submit" value="Save">
 </form>
