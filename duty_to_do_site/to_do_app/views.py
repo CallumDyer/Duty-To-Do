@@ -15,13 +15,10 @@ def add(request):
     form = PointForm(request.POST)
     if form.is_valid():
         form.save()
-        # New_To_Do_Point = form
-        # New_To_Do_Point.save()
         return HttpResponseRedirect(reverse('to_do_app:to_do'))
     else:
         return render(request, 'to_do_app/error.html', {'form':form})
     
-
 def edit(request, to_do_point_id):
     to_do_point = get_object_or_404(To_Do_Point, pk=to_do_point_id)
     return render(request, 'to_do_app/edit.html', {'to_do_point': to_do_point})
@@ -37,6 +34,16 @@ def edit_save(request, to_do_point_id):
 
 def error(request):
     return render(request, 'to_do_app/error.html')
+
+def delete(request, to_do_point_id):
+    to_do_point = get_object_or_404(To_Do_Point, pk=to_do_point_id)
+    form = PointForm(request.POST, instance=to_do_point)
+    if form.is_valid():
+        to_do_point.delete()
+        return HttpResponseRedirect(reverse('to_do_app:to_do'))
+    else:
+        return render(request, 'to_do_app/error.html', {'form':form})
+    
 
     
     

@@ -5,3 +5,8 @@
 <br><br>
 <input type="submit" value="Save">
 </form>
+<form action="{% url 'to_do_app:delete' to_do_point.id %}" method="post">
+{% csrf_token %}
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+<input type="submit" name="to_do_point_text" value="Delete">
+</form>

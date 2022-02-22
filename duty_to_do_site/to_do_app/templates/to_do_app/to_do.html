@@ -5,7 +5,7 @@
     {% endfor %}
     </ul>
 {% else %}
-    <p>No polls are available.</p>
+    <p>No to-do points are available.</p>
 {% endif %}
 
 <form action="{% url 'to_do_app:add' %}" method="post">
