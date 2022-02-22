@@ -7,10 +7,20 @@ from .models import To_Do_Point
 from .models import PointForm
 
 def to_do(request):
-    #latest_to_do_list = To_Do_Point.objects.order_by('-pub_date')[:5]
     latest_to_do_list = To_Do_Point.objects.all()
     context = {'latest_to_do_list': latest_to_do_list}
     return render(request, 'to_do_app/to_do.html', context)
+
+def add(request):
+    form = PointForm(request.POST)
+    if form.is_valid():
+        form.save()
+        # New_To_Do_Point = form
+        # New_To_Do_Point.save()
+        return HttpResponseRedirect(reverse('to_do_app:to_do'))
+    else:
+        return render(request, 'to_do_app/error.html', {'form':form})
+    
 
 def edit(request, to_do_point_id):
     to_do_point = get_object_or_404(To_Do_Point, pk=to_do_point_id)
@@ -24,7 +34,6 @@ def edit_save(request, to_do_point_id):
         return HttpResponseRedirect(reverse('to_do_app:to_do'))
     else:
         return render(request, 'to_do_app/error.html', {'form':form})
-        #return render(request, 'to_do_app:error', {'form':form})
 
 def error(request):
     return render(request, 'to_do_app/error.html')

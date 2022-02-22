@@ -7,3 +7,11 @@
 {% else %}
     <p>No polls are available.</p>
 {% endif %}
+
+<form action="{% url 'to_do_app:add' %}" method="post">
+{% csrf_token %}
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+<textarea name="to_do_point_text" id="add"></textarea>
+<br><br>
+<input type="submit" value="Add">
+</form>
