@@ -4,8 +4,6 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.forms import UserCreationForm
-from django.urls import reverse_lazy
-from django.views import generic
 
 from .models import To_Do_Point
 from .models import PointForm

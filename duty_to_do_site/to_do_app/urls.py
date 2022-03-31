@@ -6,7 +6,6 @@ from . import views
 app_name = 'to_do_app'
 urlpatterns = [
     path('accounts/register', views.register, name='register'),
-    #path("accounts/signup/", SignUpView.as_view(), name="signup"),
     path('accounts/', include('django.contrib.auth.urls')),
     path('', views.to_do, name='to_do'),
     path('<int:to_do_point_id>/', views.edit, name='edit'),
